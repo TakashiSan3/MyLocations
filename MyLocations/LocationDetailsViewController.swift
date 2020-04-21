@@ -48,7 +48,12 @@ class LocationDetailsViewController: UITableViewController {
     }
 
     @IBAction func done() {
-        navigationController?.popViewController(animated: true)
+        let hudView = HudView.hud(inView: navigationController!.view, animated: true)
+        hudView.text = "Tapped"
+        afterDelay(0.6, run: {
+            hudView.hide()
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     @IBAction func cancel() {
